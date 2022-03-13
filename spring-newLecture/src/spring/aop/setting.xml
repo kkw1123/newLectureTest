@@ -9,10 +9,12 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<!-- Exam exam = new NewlecExam(1,1,1,1); -->
-	<bean id="target" class="spring.aop.entity.NewlecExam" p:kor="1" p:eng="1" p:math="1" p:com="1"/>
+	<bean id="target" class="spring.aop.entity.NewlecExam" p:kor="101" p:eng="1" p:math="1" p:com="1"/>
 	
 	<bean id="logAroundAdvice" class="spring.aop.advice.LogAroundAdvice" />
 	<bean id="logBeforeAdvice" class="spring.aop.advice.LogBeforeAdvice" />
+	<bean id="logAfterReturningAdvice" class="spring.aop.advice.LogAfterReturningAdvice" />
+	<bean id="logAfterThrowingAdvice" class="spring.aop.advice.LogAfterThrowingAdvice" />
 	
 	<!-- proxy 생성 -->
 	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
@@ -24,6 +26,8 @@
 			<list>
 				<value>logAroundAdvice</value>
 				<value>logBeforeAdvice</value>
+				<value>logAfterReturningAdvice</value>
+				<value>logAfterThrowingAdvice</value>
 			</list>
 		</property>
 		
