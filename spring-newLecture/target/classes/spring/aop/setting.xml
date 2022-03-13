@@ -12,6 +12,8 @@
 	<bean id="target" class="spring.aop.entity.NewlecExam" p:kor="1" p:eng="1" p:math="1" p:com="1"/>
 	
 	<bean id="logAroundAdvice" class="spring.aop.advice.LogAroundAdvice" />
+	<bean id="logBeforeAdvice" class="spring.aop.advice.LogBeforeAdvice" />
+	
 	<!-- proxy 생성 -->
 	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<!-- Exam proxy = (Exam) Proxy.newProxyInstance(loader, interfaces, h -->
@@ -21,6 +23,7 @@
 		<property name="interceptorNames">
 			<list>
 				<value>logAroundAdvice</value>
+				<value>logBeforeAdvice</value>
 			</list>
 		</property>
 		
