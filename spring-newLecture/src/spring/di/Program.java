@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import spring.di.entity.Exam;
@@ -22,8 +23,24 @@ public class Program {
 		//ExamConsole console = new GridExamConsole(); //DI 2
 		//console.setExam(exam);
 		
-		ApplicationContext context = 
-				new ClassPathXmlApplicationContext("spring/di/setting.xml");
+		//xml 활용시 경로 지정
+		/*
+		 * ApplicationContext context = new
+		 * ClassPathXmlApplicationContext("spring/di/setting.xml");
+		 */
+		
+		//java config 활용시 경로 지정 방법 1
+		/*
+		 * ApplicationContext context = new
+		 * AnnotationConfigApplicationContext(NewlecDiConfig.class);
+		 */
+		
+		//java config 활용시 경로 지정 방법 2
+		AnnotationConfigApplicationContext context = 
+				new AnnotationConfigApplicationContext();
+		//context.register(NewlecDiConfig.class, other config.class);
+		context.register(NewlecDiConfig.class);
+		context.refresh();
 		
 		//Exam exam = context.getBean(Exam.class);
 		//System.out.println(exam.toString()); 

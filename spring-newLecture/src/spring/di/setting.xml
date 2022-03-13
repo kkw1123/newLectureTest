@@ -13,7 +13,7 @@
 	<!-- <context:annotation-config /> -->
 	
 	<!-- 원하는 패키지 내에서 component가 있는지 스캔함 -->
-	<context:component-scan base-package="spring.di.ui, spring.di.entity" />
+	<!-- <context:component-scan base-package="spring.di.ui, spring.di.entity" /> -->
 	
 	<!-- Exam exam = new NewlecExam(); -->
 	<!-- <bean id = "exam1" class="spring.di.entity.NewlecExam" p:kor="1" p:eng="2"> 
