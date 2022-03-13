@@ -3,33 +3,43 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
-
+	
+	<!-- bean으로 설정한 객체들이 annotation을 선언했다고 알리는 부분
+		 component로 사용하게 되면 필요없어지는 설정-->
+	<!-- <context:annotation-config /> -->
+	
+	<!-- 원하는 패키지 내에서 component가 있는지 스캔함 -->
+	<context:component-scan base-package="spring.di.ui, spring.di.entity" />
+	
 	<!-- Exam exam = new NewlecExam(); -->
-	<bean id = "exam" class="spring.di.entity.NewlecExam"> 
-		<!-- setter로 받을 때
+	<!-- <bean id = "exam1" class="spring.di.entity.NewlecExam" p:kor="1" p:eng="2"> 
+		setter로 받을 때
 		<property name="kor">
 			<value>10</value>
 		</property>
 		<property name="eng" value="20"></property>
 		<property name="math" value="30"></property>
-		<property name="com" value="40"></property> -->
+		<property name="com" value="40"></property>
 	
-		<!-- 다중인자로 받을 때 -->
-		<!-- <constructor-arg index="0" value="10" />
+		다중인자로 받을 때
+		<constructor-arg index="0" value="10" />
 		<constructor-arg index="1" value="20" />
 		<constructor-arg index="2" value="30" />
-		<constructor-arg index="3" value="40" /> -->
+		<constructor-arg index="3" value="40" />
 		
-		<!-- 다중인자로 받을 때(칼럼 값 명시), 타입 값 구분도 가능 -->
+		다중인자로 받을 때(칼럼 값 명시), 타입 값 구분도 가능
 		<constructor-arg name="kor" value="10" />
 		<constructor-arg name="eng" value="20" />
 		<constructor-arg name="math" value="30" />
 		<constructor-arg name="com" value="40" />
-		<!-- <constructor-arg name="kor" type="float" value="10" /> -->
+		<constructor-arg name="kor" type="float" value="10" />
 		
 	</bean>
+	<bean id = "exam2" class="spring.di.entity.NewlecExam" p:kor="10" p:eng="20" />  -->
 	
 	<!-- 다중인자로 받을 때, p태그 활용 -->
 	<!-- <bean id = "exam" 
@@ -38,20 +48,20 @@
 	      p:eng="20" />  -->
 	
 	<!-- ExamConsole console = new InlineExamConsole(); -->
-	<!-- <bean id = "console" class="spring.di.ui.InlineExamConsole"> -->
+	<!-- <bean id = "console" class="spring.di.ui.GridExamConsole"> -->
 	<!-- ExamConsole console = new GridExamConsole(); -->
-	<bean id = "console" class="spring.di.ui.GridExamConsole">
-		<!-- console.setExam(exam); -->
+	<!-- <bean id = "console" class="spring.di.ui.InlineExamConsole">
+		console.setExam(exam);
 		<property name="exam" ref="exam"></property>
-	</bean>
+	</bean> -->
 	
-	<util:list id="exams" list-class="java.util.ArrayList">
-		<!-- 빈을 직접 추가하거나 -->
+	<!-- <util:list id="exams" list-class="java.util.ArrayList">
+		빈을 직접 추가하거나
 		<bean class="spring.di.entity.NewlecExam" p:kor="1" p:eng="2" />
-		<!-- 참조하여 불러올 수도 있음 -->
+		참조하여 불러올 수도 있음
 		<ref bean="exam"/>
 	</util:list>
-	
+	 -->
 	
 	<!-- 콜렉션 생성도 가능 -->
 	<!-- <bean id="exams" class="java.util.ArrayList"> 

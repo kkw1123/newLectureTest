@@ -1,9 +1,19 @@
 package spring.di.entity;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+
+@Controller
 public class NewlecExam implements Exam {
 	
+	@Value("10")
 	private int kor;
+	@Value("20")
 	private int eng;
+	private int math;
+	private int com;
 	
 	public NewlecExam() {
 		// TODO Auto-generated constructor stub
@@ -49,9 +59,6 @@ public class NewlecExam implements Exam {
 		this.com = com;
 	}
 
-	private int math;
-	private int com;
-	
 	@Override
 	public int total() {
 		return kor+eng+math+com;
